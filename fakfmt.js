@@ -451,7 +451,7 @@ function addTable() {
                     "<td colspan='1' align='center'>" + 
                         "<a href='#' onclick='return setEditMode(2)' id='buttonc' class='tooltip farm_icon farm_icon_c'  title='Bouton C'>"+
                     "<td colspan='1' align='center'>" + 
-                        "<input class='btn tooltip' type='button' value='Ignorer' onclick='return setEditMode(3)' style='margin:0px 0px 0px 0px' title='Ignore la ligne de pillage'/>" + 
+                        "<input class='btn tooltip' type='button' value='Ignore' onclick='return setEditMode(3)' style='margin:0px 0px 0px 0px' title='Ignore la ligne de pillage'/>" + 
                     "<td colspan='1' align='center'>" + 
                         "<a href='#' onclick='return setEditMode(4)' id='buttonleft' class='tooltip ' title='<-'><-</a>" + 
                     "<td colspan='1' align='center'>" + 
@@ -469,19 +469,19 @@ function addTable() {
             "' onchange='onlyNum(this);' disabled> Εώς  <input type='text' id='txtLastPage' size='2' maxlength='2' value='" + userset[pos.s.lp] +
             "' onchange='onlyNum(this);' disabled><tr><td align='center'><b>Κρύψε</b><td><input type='checkbox' id='chbRemAxes' onclick='return chkBoxClick($(this).is(\":checked\"), " + pos.s
             .remaxes +
-            ")'> <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/attacks.png' title='Επιθέσεις στο δρόμο' alt='' class='tooltip' /> Attaques en cours <input type='text' id='txtNbAttacks' size='2' maxlength='2' value='" + userset[pos.s.MaxNbAttacks] + "' onchange='onlyNum(this)' disabled><input type='checkbox' id='chbRemBlue' onclick='return chkBoxClick($(this).is(\":checked\"), " +
+            ")'> <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/attacks.png' title='Επιθέσεις στο δρόμο' alt='' class='tooltip' /> Επιθέσεις στο δρόμο <input type='text' id='txtNbAttacks' size='2' maxlength='2' value='" + userset[pos.s.MaxNbAttacks] + "' onchange='onlyNum(this)' disabled><input type='checkbox' id='chbRemBlue' onclick='return chkBoxClick($(this).is(\":checked\"), " +
             pos.s.remblue +
-            ")'> <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/blue.png' title='Ανιχνεύσεις' alt='' class='tooltip' /> EspionnÃ© <br><input type='checkbox' id='chbRemGreen' onclick='return chkBoxClick($(this).is(\":checked\"), " +
+            ")'> <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/blue.png' title='Ανιχνεύσεις' alt='' class='tooltip' /> Ανιχνεύσεις <br><input type='checkbox' id='chbRemGreen' onclick='return chkBoxClick($(this).is(\":checked\"), " +
             pos.s.remgreen +
-            ")'> <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/green.png' title='Πράσινες' alt='' class='tooltip' /> Victoire Totale <br><input type='checkbox' id='chbRemYellow' onclick='return chkBoxClick($(this).is(\":checked\"), " +
+            ")'> <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/green.png' title='Πράσινες' alt='' class='tooltip' /> Πράσινες <br><input type='checkbox' id='chbRemYellow' onclick='return chkBoxClick($(this).is(\":checked\"), " +
             pos.s.remyellow +
-            ")'> <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/yellow.png' title='Κίτρινες' alt='' class='tooltip' /> Pertes <br><input type='checkbox' id='chbRemRedYellow' onclick='return chkBoxClick($(this).is(\":checked\"), " +
+            ")'> <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/yellow.png' title='Κίτρινες' alt='' class='tooltip' /> Κίτρινες <br><input type='checkbox' id='chbRemRedYellow' onclick='return chkBoxClick($(this).is(\":checked\"), " +
             pos.s.remredy +
-            ")'> <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/red_yellow.png' title='Ήττα με απώλειες' alt='' class='tooltip' /> Vaincu, mais endommagÃ©s<br><input type='checkbox' id='chbRemRedBlue' onclick='return chkBoxClick($(this).is(\":checked\"), " +
+            ")'> <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/red_yellow.png' title='Ήττα με απώλειες' alt='' class='tooltip' /> Ήττα με απώλειες<br><input type='checkbox' id='chbRemRedBlue' onclick='return chkBoxClick($(this).is(\":checked\"), " +
             pos.s.remredb +
-            ")'> <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/red_blue.png' title='Ήττα με ανίχνευση' alt='' class='tooltip' /> Vaincu, mais espionnÃ©<br><input type='checkbox' id='chbRemRed' onclick='return chkBoxClick($(this).is(\":checked\"), " +
+            ")'> <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/red_blue.png' title='Ήττα με ανίχνευση' alt='' class='tooltip' /> Ήττα με ανίχνευση<br><input type='checkbox' id='chbRemRed' onclick='return chkBoxClick($(this).is(\":checked\"), " +
             pos.s.remred +
-            ")'> <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/red.png' title='Ήττα' alt='' class='tooltip' /> DÃ©fait</tr><tr><td align='right' colspan='2'><input type='button' class='btn' id='btnSettingsReset' value='Reset' onclick='resetCookie(); UI.SuccessMessage(\"Reset effectuÃƒÆ’Ã‚Â©\",1000); run(); return false;'><input type='button' class='btn' id='btnSettingsApply' value='Apply' onclick='saveSettings(); run(); return false'><input type='button' class='btn' id='btnSettingsSave' value='Save' onclick='saveSettings(); return false;'></tr></tbody></table>"
+            ")'> <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/red.png' title='Ήττα' alt='' class='tooltip' /> Ήττα </tr><tr><td align='right' colspan='2'><input type='button' class='btn' id='btnSettingsReset' value='Reset' onclick='resetCookie(); UI.SuccessMessage(\"Reset effectuÃƒÆ’Ã‚Â©\",1000); run(); return false;'><input type='button' class='btn' id='btnSettingsApply' value='Apply' onclick='saveSettings(); run(); return false'><input type='button' class='btn' id='btnSettingsSave' value='Save' onclick='saveSettings(); return false;'></tr></tbody></table>"
         ));
 
 
@@ -531,7 +531,7 @@ function addTable() {
 function doSettings() {
     if ($('#showSettings')
         .html()
-        .indexOf('Show/Hide') != -1) {
+        .indexOf('Hide') != -1) {
         $('#bodySettings')
             .hide();
 
@@ -541,7 +541,7 @@ function doSettings() {
         $('#bodySettings')
             .show();
         $('#showSettings')
-            .html('Show/Hide');
+            .html('Hide');
     }
 }
 
