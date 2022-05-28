@@ -469,7 +469,7 @@ function addTable() {
             "' onchange='onlyNum(this);' disabled> Εώς  <input type='text' id='txtLastPage' size='2' maxlength='2' value='" + userset[pos.s.lp] +
             "' onchange='onlyNum(this);' disabled><tr><td align='center'><b>Κρύψε</b><td><input type='checkbox' id='chbRemAxes' onclick='return chkBoxClick($(this).is(\":checked\"), " + pos.s
             .remaxes +
-            ")'> <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/attacks.png' title='στο δρόμο' alt='' class='tooltip' /> Στο δρόμο <input type='text' id='txtNbAttacks' size='2' maxlength='2' value='" + userset[pos.s.MaxNbAttacks] + "' onchange='onlyNum(this)' disabled><input type='checkbox' id='chbRemBlue' onclick='return chkBoxClick($(this).is(\":checked\"), " +
+            ")'> <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/attacks.png' title='Δέχεται Επιθέσεις' alt='' class='tooltip' /> Στο δρόμο <input type='text' id='txtNbAttacks' size='2' maxlength='2' value='" + userset[pos.s.MaxNbAttacks] + "' onchange='onlyNum(this)' disabled><input type='checkbox' id='chbRemBlue' onclick='return chkBoxClick($(this).is(\":checked\"), " +
             pos.s.remblue +
             ")'> <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/blue.png' title='Ανιχνεύσεις' alt='' class='tooltip' /> Ανιχνεύσεις <br><input type='checkbox' id='chbRemGreen' onclick='return chkBoxClick($(this).is(\":checked\"), " +
             pos.s.remgreen +
