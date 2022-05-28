@@ -6,17 +6,17 @@ function hitCountApi(){
 }
 hitCountApi();
 
-//var url=document.URL;
-//if(url.indexOf('screen=am_farm')==-1||keyPressRunning)
-//{
-//    var url = window.location.search.replace("?","")
-//   var linkParts =url.split("&");
-//    var sitterPart = $.grep(linkParts,(obj)=>obj.indexOf("t=")!=-1)
-//    var villagePart = $.grep(linkParts,(obj)=>obj.indexOf("village=")!=-1)
-//    var newURL = window.location.pathname +"?" + sitterPart.concat(villagePart,["screen=am_farm"]).join("&");
-//    window.open(newURL, "_self")
-//    throw("going to LA");
-//}
+var url=document.URL;
+if(url.indexOf('screen=am_farm')==-1||keyPressRunning)
+{
+    var url = window.location.search.replace("?","")
+   var linkParts =url.split("&");
+    var sitterPart = $.grep(linkParts,(obj)=>obj.indexOf("t=")!=-1)
+    var villagePart = $.grep(linkParts,(obj)=>obj.indexOf("village=")!=-1)
+    var newURL = window.location.pathname +"?" + sitterPart.concat(villagePart,["screen=am_farm"]).join("&");
+    //window.open(newURL, "_self")
+    throw("going to LA");
+}
 
 var keyPressRunning = true;
 
