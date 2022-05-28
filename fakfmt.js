@@ -481,7 +481,7 @@ function addTable() {
             pos.s.remredb +
             ")'> <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/red_blue.png' title='Ήττα με ανίχνευση' alt='' class='tooltip' /> Vaincu, mais espionnÃ©<br><input type='checkbox' id='chbRemRed' onclick='return chkBoxClick($(this).is(\":checked\"), " +
             pos.s.remred +
-            ")'> <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/red.png' title='Ήττα' alt='' class='tooltip' /> DÃ©fait</tr><tr><td align='right' colspan='2'><input type='button' class='btn' id='btnSettingsReset' value='Reset' onclick='resetCookie(); UI.SuccessMessage(\"Reset effectuÃƒÆ’Ã‚Â©\",1000); run(); return false;'><input type='button' class='btn' id='btnSettingsApply' value='Apply' onclick='saveSettings(); run(); return false'><input type='button' class='btn' id='btnSettingsSave' value='Sauvegarder' onclick='saveSettings(); return false;'></tr></tbody></table>"
+            ")'> <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/red.png' title='Ήττα' alt='' class='tooltip' /> DÃ©fait</tr><tr><td align='right' colspan='2'><input type='button' class='btn' id='btnSettingsReset' value='Reset' onclick='resetCookie(); UI.SuccessMessage(\"Reset effectuÃƒÆ’Ã‚Â©\",1000); run(); return false;'><input type='button' class='btn' id='btnSettingsApply' value='Apply' onclick='saveSettings(); run(); return false'><input type='button' class='btn' id='btnSettingsSave' value='Save' onclick='saveSettings(); return false;'></tr></tbody></table>"
         ));
 
 
@@ -531,7 +531,7 @@ function addTable() {
 function doSettings() {
     if ($('#showSettings')
         .html()
-        .indexOf('Cacher') != -1) {
+        .indexOf('Show/Hide') != -1) {
         $('#bodySettings')
             .hide();
 
@@ -541,7 +541,7 @@ function doSettings() {
         $('#bodySettings')
             .show();
         $('#showSettings')
-            .html('Cacher');
+            .html('Show/Hide');
     }
 }
 
