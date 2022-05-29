@@ -533,13 +533,13 @@ function doSettings() {
         .html()
         .indexOf('Hide') != -1) {
         $('#bodySettings')
-            .hide();
+            .show();
         $('#showSettings')
             .html('Check');
        
     } else {
         $('#bodySettings')
-            .show();
+            .hide();
         $('#showSettings')
             .html('Hide');
        
