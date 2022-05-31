@@ -521,18 +521,19 @@ function addTable() {
 
 /****************************Hide/Show Script Settings****************************/
 function doSettings() {
-    if ($('#showSettings' == -1)
+    if ($('#showSettings')
         .html()
-        .indexOf('Hide') != -1) {
-        $('#bodySettings')
-            .hide();
-        $('#showSettings')
-            .html('Check');
-    } else {
-        $('#bodySettings')
+        .indexOf('Check') != -1) {
+         $('#bodySettings')
             .show();
-        $('#showSettings')
+         $('#showSettings')
             .html('Hide');
+       
+    } else {
+         $('#bodySettings')
+            .hide();
+         $('#showSettings')
+            .html('Check');
     }
 }
 
