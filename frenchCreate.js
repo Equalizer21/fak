@@ -521,7 +521,7 @@ function addTable() {
 
 /****************************Hide/Show Script Settings****************************/
 function doSettings() {
-    if ($('#showSettings')
+    if ($('#showSettings' == -1)
         .html()
         .indexOf('Hide') != -1) {
         $('#bodySettings')
