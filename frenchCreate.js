@@ -1,8 +1,19 @@
+var url=document.URL;
+if(url.indexOf('screen=am_farm')==-1||keyPressRunning)
+{
+    var url = window.location.search.replace("?","")
+    var linkParts =url.split("&");
+    var sitterPart = $.grep(linkParts,(obj)=>obj.indexOf("t=")!=-1)
+    var villagePart = $.grep(linkParts,(obj)=>obj.indexOf("village=")!=-1)
+    var newURL = window.location.pathname +"?" + sitterPart.concat(villagePart,["screen=am_farm"]).join("&");
+    //window.open(newURL, "_self")
+    throw("going to LA");
+}
+
+var keyPressRunning = true;
+
 var debugData = "";
 // Catching error purpose, this var will count every page loaded to prevent loading loop
-
-// EDIT 20210516 - Change input type of #txtNbAttacks (text => number) by Daydream
-
 var incrementalSwitchPage = 0;
 var cookieName = "fakeypress";
 var version = "1.99";
@@ -26,6 +37,8 @@ var keyedits = {
 }; 
 var key;
 var keydown = false;
+var last_keypress = 0;
+var timeout_keypress = 500;
 var cansend = true;
 var sitter = "";
 if (window.game_data.player.sitter != "0") {
@@ -67,7 +80,7 @@ function run() {
     if (checkCookie()) {
         if ($.cookie(cookieName)
             .indexOf('{') == -1) {
-            alert("Essayer de changer le nom de la variable cookieName. Si le problÃƒÂ¨me persiste, rendez vous sur le forum.");
+            alert("Try changing the name of the cookie variable.");
 
             dodokeys = $.cookie(cookieName)
                 .split(',');
@@ -113,15 +126,15 @@ function run() {
     } else {
         initStuff();
     }
-	}
+    }
 }
 
 
 
 /****************************Script initialisation****************************/
 function initStuff() {
-    $(document)
-        .off();
+    /*$(document)
+        .off();*/
     removeBadStuff();
     addRowRemover();
     makeItPretty();
@@ -251,7 +264,7 @@ function makeItPretty() {
                     .addClass('row_b');
             }
         });
-    hideStuffs();
+   /* hideStuffs();*/
 }
 
 function hideStuffs() {
@@ -314,10 +327,13 @@ function uglyHider(linker) {
 
 /****************************Key events binding****************************/
 function addPressKey() {
+
     window.onkeypress = function(e) {
-        checkKeys();
+        last_keypress = performance.now();
     };
     window.onkeydown = function(e) {
+        last_keypress = performance.now();
+
         key = e.keyCode ? e.keyCode : e.which;
         keydown = true;
         if (key == keycodes.left) {
@@ -327,6 +343,15 @@ function addPressKey() {
             if (pagesLoaded)
                 getNewVillage("n");
         }
+        let interval = setInterval(()=>{
+            if(performance.now() - last_keypress < timeout_keypress){
+                checkKeys(); 
+                if(!keydown) 
+                    clearInterval(interval);
+            }
+            else
+                clearInterval(interval);    
+        }, 5);
     };
     window.onkeyup = function(e) {
         checkKeys();
@@ -360,13 +385,13 @@ function addPressKey() {
         } else if (cansend) {
             if (key == keycodes.c) {
                 click('c');
-                doTime(201);
+                doTime(198);
             } else if (key == keycodes.a) {
                 click('a');
-                doTime(201);
+                doTime(198);
             } else if (key == keycodes.b) {
                 click('b');
-                doTime(201);
+                doTime(198);
             }
         }
     }
@@ -410,7 +435,7 @@ function addTable() {
             " by<br> Crimsoni & Sytten</tr></thead>" + 
             "<tbody>" + 
                 "<tr id='buttonRow'>" + 
-                    "<th colspan='1' valign='middle'>Boutons: <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/questionmark.png' title='Clique sur un bouton puis une touche du clavier pour modifier' width='13' height='13' alt='' class='tooltip' />" +
+                    "<th colspan='1' valign='middle'>Κουμπιά: <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/questionmark.png' title='Clique sur un bouton puis une touche du clavier pour modifier' width='13' height='13' alt='' class='tooltip' />" +
                     "<td colspan='1' align='center'>" + 
                         "<a href='#' onclick='return setEditMode(0)' id='buttona' class='tooltip farm_icon farm_icon_a' title='Bouton A'>" + 
                     "<td colspan='1' align='center'>" + 
@@ -418,37 +443,37 @@ function addTable() {
                     "<td colspan='1' align='center'>" + 
                         "<a href='#' onclick='return setEditMode(2)' id='buttonc' class='tooltip farm_icon farm_icon_c'  title='Bouton C'>"+
                     "<td colspan='1' align='center'>" + 
-                        "<input class='btn tooltip' type='button' value='Ignorer' onclick='return setEditMode(3)' style='margin:0px 0px 0px 0px' title='Ignore la ligne de pillage'/>" + 
+                        "<input class='btn tooltip' type='button' value='Ignore' onclick='return setEditMode(3)' style='margin:0px 0px 0px 0px' title='Ignore la ligne de pillage'/>" + 
                     "<td colspan='1' align='center'>" + 
                         "<a href='#' onclick='return setEditMode(4)' id='buttonleft' class='tooltip ' title='<-'><-</a>" + 
                     "<td colspan='1' align='center'>" + 
                         "<a href='#' onclick='return setEditMode(5)' id='buttonright' class='tooltip ' title='->'>-></a>" +
                 "</tr>" + 
                 "<tr id='keysRow'>"+
-                    "<th colspan='1'>Touche:<td align='center'>" +
+                    "<th colspan='1'>Πλήκτρα:<td align='center'>" +
             String.fromCharCode(keycodes.a) + "<td align='center'>" + String.fromCharCode(keycodes.b) + "<td align='center'>" + String.fromCharCode(
                 keycodes.c) + "<td align='center'>" + String.fromCharCode(keycodes.skip) +
             "<td>"+ String.fromCharCode(keycodes.left)+ "<td>"+ String.fromCharCode(keycodes.right) +"</tr></tbody></table></div>"));
     $('#divFAPress')
         .append($(
-            "<table id='faKeySettings' class='vis' style='width:100%' cellspacing='0'><thead><tr><th colspan='3'><em>ParamÃ¨tres</em> - <a href'#' id='showSettings' onclick='return doSettings()'>Cacher</a></thead><tbody id='bodySettings'><tr><td colspan='1' align='center'><input type='checkbox' id='chbLoadPages' onclick='return chkBoxClick($(this).is(\":checked\"), " +
-            pos.s.loadp + ")'> <b>Charger les pages</b><td colspan='4'>De <input type='text' id='txtFirstPage' size='2' maxlength='2' value='" + userset[pos.s.fp] +
-            "' onchange='onlyNum(this);' disabled> Ã  <input type='text' id='txtLastPage' size='2' maxlength='2' value='" + userset[pos.s.lp] +
-            "' onchange='onlyNum(this);' disabled><tr><td align='center'><b>Cacher</b><td><input type='checkbox' id='chbRemAxes' onclick='return chkBoxClick($(this).is(\":checked\"), " + pos.s
+            "<table id='faKeySettings' class='vis' style='width:100%' cellspacing='0'><thead><tr><th colspan='3'><em>Παράμετροι</em> - <a href'#' id='showSettings' onclick='return doSettings()'>Κρύψε</a></thead><tbody id='bodySettings'><tr><td colspan='1' align='center'><input type='checkbox' id='chbLoadPages' onclick='return chkBoxClick($(this).is(\":checked\"), " +
+            pos.s.loadp + ")'> <b>Φόρτωση σελίδων</b><td colspan='4'>Από <input type='text' id='txtFirstPage' size='2' maxlength='2' value='" + userset[pos.s.fp] +
+            "' onchange='onlyNum(this);' disabled> Εώς  <input type='text' id='txtLastPage' size='2' maxlength='2' value='" + userset[pos.s.lp] +
+            "' onchange='onlyNum(this);' disabled><tr><td align='center'><b>Κρύψε</b><td><input type='checkbox' id='chbRemAxes' onclick='return chkBoxClick($(this).is(\":checked\"), " + pos.s
             .remaxes +
-            ")'> <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/attacks.png' title='Attaques en cours (spÃ©cifier Ã  partir de combien)' alt='' class='tooltip' /> Attaques en cours <input type='number' id='txtNbAttacks' size='2' maxlength='2' value='" + userset[pos.s.MaxNbAttacks] + "' onchange='onlyNum(this)' disabled><input type='checkbox' id='chbRemBlue' onclick='return chkBoxClick($(this).is(\":checked\"), " +
+            ")'> <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/attacks.png' title='Δέχεται Επιθέσεις' alt='' class='tooltip' /> Δέχεται Επιθέσεις <input type='text' id='txtNbAttacks' size='2' maxlength='2' value='" + userset[pos.s.MaxNbAttacks] + "' onchange='onlyNum(this)' disabled><input type='checkbox' id='chbRemBlue' onclick='return chkBoxClick($(this).is(\":checked\"), " +
             pos.s.remblue +
-            ")'> <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/blue.png' title='EspionnÃ©' alt='' class='tooltip' /> EspionnÃ© <br><input type='checkbox' id='chbRemGreen' onclick='return chkBoxClick($(this).is(\":checked\"), " +
+            ")'> <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/blue.png' title='Ανιχνεύσεις' alt='' class='tooltip' /> Ανιχνεύσεις <br><input type='checkbox' id='chbRemGreen' onclick='return chkBoxClick($(this).is(\":checked\"), " +
             pos.s.remgreen +
-            ")'> <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/green.png' title='Victoire Totale' alt='' class='tooltip' /> Victoire Totale <br><input type='checkbox' id='chbRemYellow' onclick='return chkBoxClick($(this).is(\":checked\"), " +
+            ")'> <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/green.png' title='Πράσινες' alt='' class='tooltip' /> Πράσινες <br><input type='checkbox' id='chbRemYellow' onclick='return chkBoxClick($(this).is(\":checked\"), " +
             pos.s.remyellow +
-            ")'> <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/yellow.png' title='Pertes' alt='' class='tooltip' /> Pertes <br><input type='checkbox' id='chbRemRedYellow' onclick='return chkBoxClick($(this).is(\":checked\"), " +
+            ")'> <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/yellow.png' title='Κίτρινες' alt='' class='tooltip' /> Κίτρινες <br><input type='checkbox' id='chbRemRedYellow' onclick='return chkBoxClick($(this).is(\":checked\"), " +
             pos.s.remredy +
-            ")'> <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/red_yellow.png' title='Vaincu, mais bÃ¢timent(s) endommagÃ©(s)' alt='' class='tooltip' /> Vaincu, mais endommagÃ©s<br><input type='checkbox' id='chbRemRedBlue' onclick='return chkBoxClick($(this).is(\":checked\"), " +
+            ")'> <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/red_yellow.png' title='Ήττα με απώλειες' alt='' class='tooltip' /> Ήττα με απώλειες<br><input type='checkbox' id='chbRemRedBlue' onclick='return chkBoxClick($(this).is(\":checked\"), " +
             pos.s.remredb +
-            ")'> <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/red_blue.png' title='Vaincu, mais espionnÃ©' alt='' class='tooltip' /> Vaincu, mais espionnÃ©<br><input type='checkbox' id='chbRemRed' onclick='return chkBoxClick($(this).is(\":checked\"), " +
+            ")'> <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/red_blue.png' title='Ήττα με ανίχνευση' alt='' class='tooltip' /> Ήττα με ανίχνευση<br><input type='checkbox' id='chbRemRed' onclick='return chkBoxClick($(this).is(\":checked\"), " +
             pos.s.remred +
-            ")'> <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/red.png' title='DÃ©fait' alt='' class='tooltip' /> DÃ©fait</tr><tr><td align='right' colspan='2'><input type='button' class='btn' id='btnSettingsReset' value='Reset' onclick='resetCookie(); UI.SuccessMessage(\"Reset effectuÃƒÆ’Ã‚Â©\",1000); run(); return false;'><input type='button' class='btn' id='btnSettingsApply' value='Appliquer' onclick='saveSettings(); run(); return false'><input type='button' class='btn' id='btnSettingsSave' value='Sauvegarder' onclick='saveSettings(); return false;'></tr></tbody></table>"
+            ")'> <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/red.png' title='Ήττα' alt='' class='tooltip' /> Ήττα </tr><tr><td align='right' colspan='2'><input type='button' class='btn' id='btnSettingsReset' value='Reset' onclick='resetCookie(); UI.SuccessMessage(\"Reset effectuÃƒÆ’Ã‚Â©\",1000); run(); return false;'><input type='button' class='btn' id='btnSettingsApply' value='Apply' onclick='saveSettings(); run(); return false'><input type='button' class='btn' id='btnSettingsSave' value='Save' onclick='saveSettings(); return false;'></tr></tbody></table>"
         ));
 
 
@@ -498,16 +523,18 @@ function addTable() {
 function doSettings() {
     if ($('#showSettings')
         .html()
-        .indexOf('Cacher') != -1) {
-        $('#bodySettings')
-            .hide();
-        $('#showSettings')
-            .html('Voir');
-    } else {
+        .indexOf('Hide') != -1) {
         $('#bodySettings')
             .show();
         $('#showSettings')
-            .html('Cacher');
+            .html('Check');
+       
+    } else {
+        $('#bodySettings')
+            .hide();
+        $('#showSettings')
+            .html('Hide');
+       
     }
 }
 
@@ -824,13 +851,13 @@ function getNewVillage(way) {
                     .remove();
             },
             success: function(data) {
-				/* 	Here we got the recent way for InnoGames to update game data
-					Then we parse it and we delete some bonus data that cause error
-						=> Due to new system, switching between a normal village and a bonus village don't work, cause you feed a game_data.village.bonus object
-				*/
+                /*  Here we got the recent way for InnoGames to update game data
+                    Then we parse it and we delete some bonus data that cause error
+                        => Due to new system, switching between a normal village and a bonus village don't work, cause you feed a game_data.village.bonus object
+                */
                 debugData = data.split("TribalWars.updateGameData(")[1].split("});")[0] + "}";
-				debugData = JSON.parse(debugData);
-				debugData.village.bonus = null;
+                debugData = JSON.parse(debugData);
+                debugData.village.bonus = null;
                 TribalWars.updateGameData(debugData);
                 var v = $(data);
                 var title = data.split('<title>')[1].split('</title>')[0];
@@ -887,9 +914,9 @@ function getFA() {
                     .remove();
             },
             success: function(data) {
-				/* Same as getNewVillage but we don't need to change the bonus attribute */
+                /* Same as getNewVillage but we don't need to change the bonus attribute */
                 debugData = data.split("TribalWars.updateGameData(")[1].split("});")[0] + "}";
-				debugData = JSON.parse(debugData);
+                debugData = JSON.parse(debugData);
                 TribalWars.updateGameData(debugData);
                 var v = $(data);
                 var title = data.split('<title>')[1].split('</title>')[0];
@@ -910,8 +937,8 @@ function getFA() {
                 $('#loaders')
                     .remove();
                 pagesLoaded = true;
-				incrementalSwitchPage++;
-				run();
+                incrementalSwitchPage++;
+                run();
             }
         });
     });
@@ -950,15 +977,15 @@ function openLoader() {
     $('#contentContainer')
         .append($(widget));
 
-		/* 	This timeout check if the loading is correctly done 4 seconds after his start 
-			If not, then the event is cancelled, and the last page is loaded from scratch 
-		*/
+        /*  This timeout check if the loading is correctly done 4 seconds after his start 
+            If not, then the event is cancelled, and the last page is loaded from scratch 
+        */
     setTimeout(function() {
         if (incrementalSwitchPage <= currentIncremental) {
-            UI.ErrorMessage('Un problÃƒÆ’Ã‚Â¨me a ÃƒÆ’Ã‚Â©tÃƒÆ’Ã‚Â© rencontrÃƒÆ’Ã‚Â©, la page va se recharger.');
+            UI.ErrorMessage('Ένα πρόβλημα δημιουργήθηκε, η σελίδα θα ανανεωθεί');
             var currentURL = document.URL.split("village=") + "village=" + game_data.village.id + "&screen=am_farm";
             window.location.href = currentURL;
-			console.log("La page a mis trop de temps ÃƒÆ’  se charger.")
+            console.log("Κάνε refresh.")
         }
     }, 4000);
 
