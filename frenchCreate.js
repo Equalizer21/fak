@@ -523,18 +523,16 @@ function addTable() {
 function doSettings() {
     if ($('#showSettings')
         .html()
-        .indexOf('Check') != -1) {
+        .indexOf('Hide') != -1) {
+        $('#bodySettings')
+            .hide();
+        $('#showSettings')
+            .html('Check');
+    } else {
         $('#bodySettings')
             .show();
         $('#showSettings')
             .html('Hide');
-       
-    } else {
-        $('#bodySettings')
-            .hide();
-        $('#showSettings')
-            .html('Hide');
-       
     }
 }
 
