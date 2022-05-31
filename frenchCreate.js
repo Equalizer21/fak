@@ -523,11 +523,11 @@ function addTable() {
 function doSettings() {
     if ($('#showSettings')
         .html()
-        .indexOf('Hide') != -1) {
+        .indexOf('Check') != -1) {
         $('#bodySettings')
             .show();
         $('#showSettings')
-            .html('Check');
+            .html('Hide');
        
     } else {
         $('#bodySettings')
@@ -576,7 +576,7 @@ function saveSettings() {
     userset[pos.s.MaxNbAttacks] = $('#txtNbAttacks')
         .val();
     setCookie(cookieName, "{" + version + "}[" + userkeys.toString() + "][" + userset.toString() + "]", 180);
-    UI.SuccessMessage("ParamÃƒÆ’Ã‚Â¨tres sauvÃƒÆ’Ã‚Â©s", 1000);
+    UI.SuccessMessage("Οι αλλαγές έχουν αποθηκευτεί.", 1000);
 }
 
 function setEditMode(let) {
