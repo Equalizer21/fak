@@ -1,11 +1,3 @@
-var countapikey = "fastKeypress";
-function hitCountApi(){
-    $.getJSON(`https://api.countapi.xyz/hit/fmthemasterScripts/${countapikey}`, function(response) {
-        console.log(`This script has been run ${response.value} times`);
-    });
-}
-hitCountApi();
-
 var url=document.URL;
 if(url.indexOf('screen=am_farm')==-1||keyPressRunning)
 {
