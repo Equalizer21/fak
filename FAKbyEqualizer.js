@@ -461,9 +461,9 @@ function addTable() {
             "' onchange='onlyNum(this);' disabled> to  <input type='text' id='txtLastPage' size='2' maxlength='2' value='" + userset[pos.s.lp] +
             "' onchange='onlyNum(this);' disabled><tr><td align='center'><b>Hide</b><td><input type='checkbox' id='chbRemAxes' onclick='return chkBoxClick($(this).is(\":checked\"), " + pos.s
             .remaxes +
-            ")'> <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/attacks.png' title='Ongoing Attacks' alt='' class='tooltip' /> Ongoing Attacks <input type='text' id='txtNbAttacks' size='2' maxlength='2' value='" + userset[pos.s.MaxNbAttacks] + "' onchange='onlyNum(this)' disabled><input type='checkbox' id='chbRemBlue' onclick='return chkBoxClick($(this).is(\":checked\"), " +
+            ")'> <p> <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/attacks.png' title='Ongoing Attacks' alt='' class='tooltip' /> Ongoing Attacks <input type='text' id='txtNbAttacks' size='2' maxlength='2' value='" + userset[pos.s.MaxNbAttacks] + "' onchange='onlyNum(this)' disabled><input type='checkbox' id='chbRemBlue' onclick='return chkBoxClick($(this).is(\":checked\"), " +
             pos.s.remblue +
-            ")'> <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/blue.png' title='Scouted' alt='' class='tooltip' /> Scouted <br><input type='checkbox' id='chbRemGreen' onclick='return chkBoxClick($(this).is(\":checked\"), " +
+            ")'> </p> <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/blue.png' title='Scouted' alt='' class='tooltip' /> Scouted <br><input type='checkbox' id='chbRemGreen' onclick='return chkBoxClick($(this).is(\":checked\"), " +
             pos.s.remgreen +
             ")'> <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/green.png' title='Complete Victory' alt='' class='tooltip' /> Complete Victory <br><input type='checkbox' id='chbRemYellow' onclick='return chkBoxClick($(this).is(\":checked\"), " +
             pos.s.remyellow +
