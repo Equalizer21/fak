@@ -450,7 +450,7 @@ function addTable() {
                         "<a href='#' onclick='return setEditMode(5)' id='buttonright' class='tooltip ' title='->'>-></a>" +
                 "</tr>" + 
                 "<tr id='keysRow'>"+
-                    "<th colspan='1'>Buttons:<td align='center'>" +
+                    "<th colspan='1'>Keys:<td align='center'>" +
             String.fromCharCode(keycodes.a) + "<td align='center'>" + String.fromCharCode(keycodes.b) + "<td align='center'>" + String.fromCharCode(
                 keycodes.c) + "<td align='center'>" + String.fromCharCode(keycodes.skip) +
             "<td>"+ String.fromCharCode(keycodes.left)+ "<td>"+ String.fromCharCode(keycodes.right) +"</tr></tbody></table></div>"));
@@ -461,19 +461,19 @@ function addTable() {
             "' onchange='onlyNum(this);' disabled> to  <input type='text' id='txtLastPage' size='2' maxlength='2' value='" + userset[pos.s.lp] +
             "' onchange='onlyNum(this);' disabled><tr><td align='center'><b>Hide</b><td><input type='checkbox' id='chbRemAxes' onclick='return chkBoxClick($(this).is(\":checked\"), " + pos.s
             .remaxes +
-            ")'> <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/attacks.png' title='Incoming Attacks' alt='' class='tooltip' /> Δέχεται Επιθέσεις <input type='text' id='txtNbAttacks' size='2' maxlength='2' value='" + userset[pos.s.MaxNbAttacks] + "' onchange='onlyNum(this)' disabled><input type='checkbox' id='chbRemBlue' onclick='return chkBoxClick($(this).is(\":checked\"), " +
+            ")'> <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/attacks.png' title='Ongoing Attacks' alt='' class='tooltip' /> Ongoing Attacks <input type='text' id='txtNbAttacks' size='2' maxlength='2' value='" + userset[pos.s.MaxNbAttacks] + "' onchange='onlyNum(this)' disabled><input type='checkbox' id='chbRemBlue' onclick='return chkBoxClick($(this).is(\":checked\"), " +
             pos.s.remblue +
-            ")'> <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/blue.png' title='Scouted' alt='' class='tooltip' /> Ανιχνεύσεις <br><input type='checkbox' id='chbRemGreen' onclick='return chkBoxClick($(this).is(\":checked\"), " +
+            ")'> <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/blue.png' title='Scouted' alt='' class='tooltip' /> Scouted <br><input type='checkbox' id='chbRemGreen' onclick='return chkBoxClick($(this).is(\":checked\"), " +
             pos.s.remgreen +
-            ")'> <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/green.png' title='Complete Victory' alt='' class='tooltip' /> Πράσινες <br><input type='checkbox' id='chbRemYellow' onclick='return chkBoxClick($(this).is(\":checked\"), " +
+            ")'> <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/green.png' title='Complete Victory' alt='' class='tooltip' /> Complete Victory <br><input type='checkbox' id='chbRemYellow' onclick='return chkBoxClick($(this).is(\":checked\"), " +
             pos.s.remyellow +
-            ")'> <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/yellow.png' title='Victory with losses' alt='' class='tooltip' /> Κίτρινες <br><input type='checkbox' id='chbRemRedYellow' onclick='return chkBoxClick($(this).is(\":checked\"), " +
+            ")'> <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/yellow.png' title='Victory with losses' alt='' class='tooltip' /> Victory with losses <br><input type='checkbox' id='chbRemRedYellow' onclick='return chkBoxClick($(this).is(\":checked\"), " +
             pos.s.remredy +
-            ")'> <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/red_yellow.png' title='Defeated, but buildings damaged' alt='' class='tooltip' /> Ήττα με απώλειες<br><input type='checkbox' id='chbRemRedBlue' onclick='return chkBoxClick($(this).is(\":checked\"), " +
+            ")'> <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/red_yellow.png' title='Defeated, but buildings damaged' alt='' class='tooltip' /> Defeated, but buildings damaged<br><input type='checkbox' id='chbRemRedBlue' onclick='return chkBoxClick($(this).is(\":checked\"), " +
             pos.s.remredb +
-            ")'> <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/red_blue.png' title='Defeated but scouted' alt='' class='tooltip' /> Ήττα με ανίχνευση<br><input type='checkbox' id='chbRemRed' onclick='return chkBoxClick($(this).is(\":checked\"), " +
+            ")'> <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/red_blue.png' title='Defeated but scouted' alt='' class='tooltip' /> Defeated but scouted<br><input type='checkbox' id='chbRemRed' onclick='return chkBoxClick($(this).is(\":checked\"), " +
             pos.s.remred +
-            ")'> <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/red.png' title='Defeat' alt='' class='tooltip' /> Ήττα </tr><tr><td align='right' colspan='2'><input type='button' class='btn' id='btnSettingsReset' value='Reset' onclick='resetCookie(); UI.SuccessMessage(\"Reset effectuÃƒÆ’Ã‚Â©\",1000); run(); return false;'><input type='button' class='btn' id='btnSettingsApply' value='Apply' onclick='saveSettings(); run(); return false'><input type='button' class='btn' id='btnSettingsSave' value='Save' onclick='saveSettings(); return false;'></tr></tbody></table>"
+            ")'> <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/red.png' title='Defeat' alt='' class='tooltip' /> Defeat </tr><tr><td align='right' colspan='2'><input type='button' class='btn' id='btnSettingsReset' value='Reset' onclick='resetCookie(); UI.SuccessMessage(\"Reset effectuÃƒÆ’Ã‚Â©\",1000); run(); return false;'><input type='button' class='btn' id='btnSettingsApply' value='Apply' onclick='saveSettings(); run(); return false'><input type='button' class='btn' id='btnSettingsSave' value='Save' onclick='saveSettings(); return false;'></tr></tbody></table>"
         ));
 
 
