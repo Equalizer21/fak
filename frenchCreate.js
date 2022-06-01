@@ -100,7 +100,7 @@ function run() {
             setCookie(cookieName, 180);
         } else if (parseFloat($.cookie(cookieName)
                 .split("{")[1].split("}")[0]) <= updateversion) {
-            UI.ErrorMessage("A cause d'une mise a jour, les donnÃƒÆ’Ã‚Â©es ont ÃƒÆ’Ã‚Â©tÃƒÆ’Ã‚Â©s perdues. Veuillez recommencer les assignations de touches.", 5000);
+            UI.ErrorMessage("Due to an update, the data has been lost. Please start the key assignments again.", 5000);
 
             resetCookie();
         } else {
@@ -116,7 +116,7 @@ function run() {
             keycodes.right = parseInt(userkeys[4]);
         }
     } else {
-        UI.SuccessMessage("Bienvenue sur le Fakeypress de Crimsoni", 1000);
+        UI.SuccessMessage("Welcome to the FAKeypress by Crimsoni, modified by Equalizer", 1000);
         resetCookie();
     }
     faTable = $('#plunder_list');
@@ -435,7 +435,7 @@ function addTable() {
             " by<br> Crimsoni & Sytten</tr></thead>" + 
             "<tbody>" + 
                 "<tr id='buttonRow'>" + 
-                    "<th colspan='1' valign='middle'>Κουμπιά: <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/questionmark.png' title='Clique sur un bouton puis une touche du clavier pour modifier' width='13' height='13' alt='' class='tooltip' />" +
+                    "<th colspan='1' valign='middle'>Buttons: <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/questionmark.png' title='Click on a button then a key on the keyboard to modify it' width='13' height='13' alt='' class='tooltip' />" +
                     "<td colspan='1' align='center'>" + 
                         "<a href='#' onclick='return setEditMode(0)' id='buttona' class='tooltip farm_icon farm_icon_a' title='Bouton A'>" + 
                     "<td colspan='1' align='center'>" + 
@@ -450,30 +450,30 @@ function addTable() {
                         "<a href='#' onclick='return setEditMode(5)' id='buttonright' class='tooltip ' title='->'>-></a>" +
                 "</tr>" + 
                 "<tr id='keysRow'>"+
-                    "<th colspan='1'>Πλήκτρα:<td align='center'>" +
+                    "<th colspan='1'>Buttons:<td align='center'>" +
             String.fromCharCode(keycodes.a) + "<td align='center'>" + String.fromCharCode(keycodes.b) + "<td align='center'>" + String.fromCharCode(
                 keycodes.c) + "<td align='center'>" + String.fromCharCode(keycodes.skip) +
             "<td>"+ String.fromCharCode(keycodes.left)+ "<td>"+ String.fromCharCode(keycodes.right) +"</tr></tbody></table></div>"));
     $('#divFAPress')
         .append($(
-            "<table id='faKeySettings' class='vis' style='width:100%' cellspacing='0'><thead><tr><th colspan='3'><em>Παράμετροι</em> - <a href'#' id='showSettings' onclick='return doSettings()'>Κρύψε</a></thead><tbody id='bodySettings'><tr><td colspan='1' align='center'><input type='checkbox' id='chbLoadPages' onclick='return chkBoxClick($(this).is(\":checked\"), " +
-            pos.s.loadp + ")'> <b>Φόρτωση σελίδων</b><td colspan='4'>Από <input type='text' id='txtFirstPage' size='2' maxlength='2' value='" + userset[pos.s.fp] +
-            "' onchange='onlyNum(this);' disabled> Εώς  <input type='text' id='txtLastPage' size='2' maxlength='2' value='" + userset[pos.s.lp] +
-            "' onchange='onlyNum(this);' disabled><tr><td align='center'><b>Κρύψε</b><td><input type='checkbox' id='chbRemAxes' onclick='return chkBoxClick($(this).is(\":checked\"), " + pos.s
+            "<table id='faKeySettings' class='vis' style='width:100%' cellspacing='0'><thead><tr><th colspan='3'><em>Παράμετροι</em> - <a href'#' id='showSettings' onclick='return doSettings()'>Hide</a></thead><tbody id='bodySettings'><tr><td colspan='1' align='center'><input type='checkbox' id='chbLoadPages' onclick='return chkBoxClick($(this).is(\":checked\"), " +
+            pos.s.loadp + ")'> <b>Load Pages</b><td colspan='4'>From <input type='text' id='txtFirstPage' size='2' maxlength='2' value='" + userset[pos.s.fp] +
+            "' onchange='onlyNum(this);' disabled> to  <input type='text' id='txtLastPage' size='2' maxlength='2' value='" + userset[pos.s.lp] +
+            "' onchange='onlyNum(this);' disabled><tr><td align='center'><b>Hide</b><td><input type='checkbox' id='chbRemAxes' onclick='return chkBoxClick($(this).is(\":checked\"), " + pos.s
             .remaxes +
-            ")'> <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/attacks.png' title='Δέχεται Επιθέσεις' alt='' class='tooltip' /> Δέχεται Επιθέσεις <input type='text' id='txtNbAttacks' size='2' maxlength='2' value='" + userset[pos.s.MaxNbAttacks] + "' onchange='onlyNum(this)' disabled><input type='checkbox' id='chbRemBlue' onclick='return chkBoxClick($(this).is(\":checked\"), " +
+            ")'> <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/attacks.png' title='Incoming Attacks' alt='' class='tooltip' /> Δέχεται Επιθέσεις <input type='text' id='txtNbAttacks' size='2' maxlength='2' value='" + userset[pos.s.MaxNbAttacks] + "' onchange='onlyNum(this)' disabled><input type='checkbox' id='chbRemBlue' onclick='return chkBoxClick($(this).is(\":checked\"), " +
             pos.s.remblue +
-            ")'> <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/blue.png' title='Ανιχνεύσεις' alt='' class='tooltip' /> Ανιχνεύσεις <br><input type='checkbox' id='chbRemGreen' onclick='return chkBoxClick($(this).is(\":checked\"), " +
+            ")'> <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/blue.png' title='Scouted' alt='' class='tooltip' /> Ανιχνεύσεις <br><input type='checkbox' id='chbRemGreen' onclick='return chkBoxClick($(this).is(\":checked\"), " +
             pos.s.remgreen +
-            ")'> <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/green.png' title='Πράσινες' alt='' class='tooltip' /> Πράσινες <br><input type='checkbox' id='chbRemYellow' onclick='return chkBoxClick($(this).is(\":checked\"), " +
+            ")'> <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/green.png' title='Complete Victory' alt='' class='tooltip' /> Πράσινες <br><input type='checkbox' id='chbRemYellow' onclick='return chkBoxClick($(this).is(\":checked\"), " +
             pos.s.remyellow +
-            ")'> <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/yellow.png' title='Κίτρινες' alt='' class='tooltip' /> Κίτρινες <br><input type='checkbox' id='chbRemRedYellow' onclick='return chkBoxClick($(this).is(\":checked\"), " +
+            ")'> <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/yellow.png' title='Victory with losses' alt='' class='tooltip' /> Κίτρινες <br><input type='checkbox' id='chbRemRedYellow' onclick='return chkBoxClick($(this).is(\":checked\"), " +
             pos.s.remredy +
-            ")'> <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/red_yellow.png' title='Ήττα με απώλειες' alt='' class='tooltip' /> Ήττα με απώλειες<br><input type='checkbox' id='chbRemRedBlue' onclick='return chkBoxClick($(this).is(\":checked\"), " +
+            ")'> <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/red_yellow.png' title='Defeated, but buildings damaged' alt='' class='tooltip' /> Ήττα με απώλειες<br><input type='checkbox' id='chbRemRedBlue' onclick='return chkBoxClick($(this).is(\":checked\"), " +
             pos.s.remredb +
-            ")'> <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/red_blue.png' title='Ήττα με ανίχνευση' alt='' class='tooltip' /> Ήττα με ανίχνευση<br><input type='checkbox' id='chbRemRed' onclick='return chkBoxClick($(this).is(\":checked\"), " +
+            ")'> <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/red_blue.png' title='Defeated but scouted' alt='' class='tooltip' /> Ήττα με ανίχνευση<br><input type='checkbox' id='chbRemRed' onclick='return chkBoxClick($(this).is(\":checked\"), " +
             pos.s.remred +
-            ")'> <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/red.png' title='Ήττα' alt='' class='tooltip' /> Ήττα </tr><tr><td align='right' colspan='2'><input type='button' class='btn' id='btnSettingsReset' value='Reset' onclick='resetCookie(); UI.SuccessMessage(\"Reset effectuÃƒÆ’Ã‚Â©\",1000); run(); return false;'><input type='button' class='btn' id='btnSettingsApply' value='Apply' onclick='saveSettings(); run(); return false'><input type='button' class='btn' id='btnSettingsSave' value='Save' onclick='saveSettings(); return false;'></tr></tbody></table>"
+            ")'> <img src='https://media.innogamescdn.com/com_DS_FR/Scripts/Pillage/red.png' title='Defeat' alt='' class='tooltip' /> Ήττα </tr><tr><td align='right' colspan='2'><input type='button' class='btn' id='btnSettingsReset' value='Reset' onclick='resetCookie(); UI.SuccessMessage(\"Reset effectuÃƒÆ’Ã‚Â©\",1000); run(); return false;'><input type='button' class='btn' id='btnSettingsApply' value='Apply' onclick='saveSettings(); run(); return false'><input type='button' class='btn' id='btnSettingsSave' value='Save' onclick='saveSettings(); return false;'></tr></tbody></table>"
         ));
 
 
@@ -575,7 +575,7 @@ function saveSettings() {
     userset[pos.s.MaxNbAttacks] = $('#txtNbAttacks')
         .val();
     setCookie(cookieName, "{" + version + "}[" + userkeys.toString() + "][" + userset.toString() + "]", 180);
-    UI.SuccessMessage("Οι αλλαγές έχουν αποθηκευτεί.", 1000);
+    UI.SuccessMessage("Changes have been saved.", 1000);
 }
 
 function setEditMode(let) {
@@ -981,10 +981,10 @@ function openLoader() {
         */
     setTimeout(function() {
         if (incrementalSwitchPage <= currentIncremental) {
-            UI.ErrorMessage('Ένα πρόβλημα δημιουργήθηκε, η σελίδα θα ανανεωθεί');
+            UI.ErrorMessage('A problem has occured, the webpage will be refreshed');
             var currentURL = document.URL.split("village=") + "village=" + game_data.village.id + "&screen=am_farm";
             window.location.href = currentURL;
-            console.log("Κάνε refresh.")
+            console.log("Please refresh.")
         }
     }, 4000);
 
