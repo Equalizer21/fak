@@ -117,31 +117,5 @@ $(function(){
 		}
 	}
 	/* End */
-
-	if(urlParams['screen'] == 'am_farm'){
-		/* FA Key Press Edited Auto Load */
-		if(md5(game_data.player.name) == 'b83789c8ce9ae93fb672165e95858d46'){
-			$.getScript('https://127.0.0.1/Temp/TW%20-%20Farming/fakeypress_1-97.js');
-		}else{
-			$.getScript('https://a1f39cddb04c309a570bd5d844e49e9b38415fb3.googledrive.com/host/0B_efZvwT5JgUaUJhUHhpeGVUUHc/fakeypress_1-97.js');
-		}
-
-		$('#farm_units').parent().css({
-			'position' : 'fixed',
-			'background-color' : '#FFFFFF',
-			'top' : '35px'
-		});
-
-		$('#header_info').css({
-			'position' : 'fixed',
-			'margin-left' : '17px',
-			'width' : '866px',
-			'top' : '103px'
-		});
-
-		$('#content_value').css({
-			'padding-top' : '35px'
-		});
-		/* End */
-	}
+	
 }
